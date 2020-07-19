@@ -1,0 +1,87 @@
+{% extends "blog/base.html" %}
+
+{% block title %}
+    <title>500-AMD794的博客</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="/static/error_static/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/error_static/src/css/404.css">
+{% endblock %}
+{% block js %}
+    <script>
+        function randomNum() {
+            return Math.floor(Math.random() * 9) + 1;
+        }
+
+        var loop1, loop2, loop3,
+            time = 30, i = 0, number;
+        loop3 = setInterval(function () {
+            if (i > 40) {
+                clearInterval(loop3);
+                document.querySelector('.thirdDigit').textContent = 5;
+            } else {
+                document.querySelector('.thirdDigit').textContent = randomNum();
+                i++;
+            }
+        }, time);
+        loop2 = setInterval(function () {
+            if (i > 80) {
+                clearInterval(loop2);
+                document.querySelector('.secondDigit').textContent = 0;
+            } else {
+                document.querySelector('.secondDigit').textContent = randomNum();
+                i++;
+            }
+        }, time);
+        loop1 = setInterval(function () {
+            if (i > 100) {
+                clearInterval(loop1);
+                document.querySelector('.firstDigit').textContent = 0;
+            } else {
+                document.querySelector('.firstDigit').textContent = randomNum();
+                i++;
+            }
+        }, time);
+    </script>
+    <script>
+        function f() {
+            $('.myaside').attr('style', 'display: none');
+            $('.error .msg').attr('style', 'left: 15%');
+            $('a').attr('style', 'text-decoration: none;');
+        }
+
+        f();
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div class="error">
+        <div class="container-floud">
+            <div class="col-xs-12 ground-color text-center">
+                <div class="container-error-404">
+                    <div class="clip">
+                        <div class="shadow">
+                            <span class="digit thirdDigit"></span>
+                        </div>
+                    </div>
+                    <div class="clip">
+                        <div class="shadow">
+                            <span class="digit secondDigit"></span>
+                        </div>
+                    </div>
+                    <div class="clip">
+                        <div class="shadow">
+                            <span class="digit firstDigit"></span>
+                        </div>
+                    </div>
+                    <div class="msg">OH!
+                        <span class="triangle"></span>
+                    </div>
+                </div>
+                <h2 class="h1">服务器的大姨妈来了</h2>
+                <h2 class="h1">Fack, shit Bichi</h2>
+            </div>
+        </div>
+    </div>
+{% endblock %}

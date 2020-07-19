@@ -1,0 +1,93 @@
+
+.autoWidth {
+    margin: 0 auto;
+    min-width: 1000px;
+    max-width: 1200px
+}
+
+.auto {
+    margin: 0 auto;
+    min-width: 1000px;
+    max-width: 1200px
+}
+
+@media screen and (max-width: 1233px) {
+    .auto {
+        padding-left: 10px
+    }
+}
+
+.clearfix:after, .clearfix:before {
+    display: table;
+    line-height: 0;
+    content: ""
+}
+
+.clearfix:after {
+    clear: both
+}
+
+.clear-float {
+    clear: both
+}
+
+.footer {
+    background-color: #009fd9;
+    font-family: microsoft yahei
+}
+
+#wx-corner {
+    border: 10px solid transparent;
+    border-left: 10px solid #fff;
+    position: absolute;
+    top: 12px;
+    right: -20px;
+    z-index: 10
+}
+
+#wb-corner {
+    border: 10px solid transparent;
+    border-left: 10px solid #fff;
+    position: absolute;
+    top: 58px;
+    right: -20px;
+    z-index: 10
+}
+
+
+.marquee-box {
+    overflow: hidden;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0
+}
+
+.marquee {
+    width: 8000%;
+    height: 60px
+}
+
+.wave-list-box {
+    float: left
+}
+
+.wave-list-box ul {
+    float: left;
+    height: 60px;
+    overflow: hidden;
+    zoom: 1
+}
+
+.wave-list-box ul li {
+    height: 60px;
+    width: 100%;
+    float: left;
+    line-height: 30px;
+    list-style: none
+}
+
+.wave-box {
+    position: relative;
+    height: 60px;
+}

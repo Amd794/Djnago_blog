@@ -1,0 +1,55 @@
+{% extends 'cms/base.html' %}
+
+{% block title %}
+    公告
+{% endblock %}
+
+
+{% block head %}
+    <script src="{% static 'js/dist/cms/announcementList.min.js' %}"></script>
+{% endblock %}
+
+{% block content-header %}
+    <h1>公告管理</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <a href="{% url 'cms:add_announcement' %}" class="btn btn-primary pull-right">添加公告</a>
+                </div>
+                <div class="box-body">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>公告</th>
+                            <th>发布日期</th>
+                            <th>修改日期</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for announcement in announcements %}
+                            <tr data-pk="{{ announcement.pk }}">
+                                <td>{{ announcement.content|safe }}</td>
+                                <td>{{ announcement.pub_time }}</td>
+                                <td>{{ announcement.fix_time }}</td>
+                                <td>
+                                    <a href="{% url 'cms:edit_announcement' %}?announcement_id={{ announcement.pk }}"
+                                       class="btn btn-info btn-xs">编辑</a>
+                                    <button id="delete-btn" class="btn btn-danger btn-xs delete-btn"
+                                            data-announcement-id="{{ announcement.pk }}">
+                                        删除
+                                    </button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

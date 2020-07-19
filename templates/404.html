@@ -1,0 +1,54 @@
+{% extends "blog/base.html" %}
+
+{% block title %}
+    <title>404-AMD794的博客</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="/static/error_static/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/error_static/src/css/404.css">
+{% endblock %}
+{% block js %}
+    <script src="/static/error_static/src/js/404.js"></script>
+    <script>
+        function f() {
+            $('.myaside').attr('style', 'display: none');
+            $('.error .msg').attr('style', 'left: 15%');
+            $('a').attr('style', 'text-decoration: none;');
+        }
+        f();
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div class="error">
+        <div class="container-floud">
+            <div class="col-xs-12 ground-color text-center">
+                <div class="container-error-404">
+                    <div class="clip">
+                        <div class="shadow">
+                            <span class="digit thirdDigit"></span>
+                        </div>
+                    </div>
+                    <div class="clip">
+                        <div class="shadow">
+                            <span class="digit secondDigit"></span>
+                        </div>
+                    </div>
+                    <div class="clip">
+                        <div class="shadow">
+                            <span class="digit firstDigit"></span>
+                        </div>
+                    </div>
+                    <div class="msg">OH!
+                        <span class="triangle"></span>
+                    </div>
+                </div>
+                <h2 class="h1">很抱歉，你访问的页面找不到了</h2>
+                <p>
+                    <a class="tohome" href="/">返回首页</a>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'cms/base.html' %}
+
+{% block title %}
+    {% if announcement %}
+        编辑公告
+    {% else %}
+        发布公告
+    {% endif %}
+{% endblock %}
+
+{% block head %}
+    <script src="{% static 'ueditor/ueditor.config.js' %}"></script>
+    <script src="{% static 'ueditor/ueditor.all.min.js' %}"></script>
+    <script src="{% static 'js/dist/cms/announcement.min.js' %}"></script>
+{% endblock %}
+
+{% block content-header %}
+    <h1>
+        {% if announcement %}
+            编辑公告
+        {% else %}
+            发布公告
+        {% endif %}
+    </h1>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <form action="" class="form">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="content-form">内容</label>
+                            <script id="editor" type="text/plain">
+                                {{ announcement.content|safe }}
+
+
+
+
+                            </script>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button id="submit-btn" data-announcement-id="{{ announcement.pk }}"
+                                class="btn btn-primary pull-right">
+                            发布公告
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

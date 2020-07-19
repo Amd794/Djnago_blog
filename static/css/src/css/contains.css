@@ -1,0 +1,15 @@
+/*使用:root 作用域来定义全局变量：*/
+:root {
+    --skin1_ThemeColor: #009fd9;
+    --skin2_ThemeColor: #09b597;
+    --primary: #5628EE;
+    --success: #0EAC70;
+    --grey-light: #99A3BA;
+    --grey: #6C7486;
+    --grey-dark: #3F4656;
+    --light: #CDD9ED;
+    --lighter: #E4ECFA;
+    --lightest: #EEF4FF;
+    --pale: #F5F9FF;
+    --shadow: rgba(18, 22, 33, .05);
+}

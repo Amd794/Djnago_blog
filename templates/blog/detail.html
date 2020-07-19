@@ -1,0 +1,167 @@
+{% extends "blog/base.html" %}
+{% load custom_filter %}
+
+{% block title %}
+    <title>{{ article.title }} - AMD794</title>
+{% endblock %}
+
+{% block meta %}
+    <meta name="keywords"
+          content="{{ article.title }},{% for tag in article.tag.all %}{{ tag }},{% endfor %}{{ article.category }}"/>
+    <meta name="description" content="{{ article.digest|safe }}"/>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="/static/css/dist/markdown.min.css">
+    <link rel="stylesheet" href="/static/prism/prism.css">
+    <link href="//staticfiles.amd794.com/viewer.min.css" rel="stylesheet">
+    <style>
+        .markdown-body p {
+            text-indent: 0;
+        }
+    </style>
+
+    <link rel="stylesheet" href="{% static 'ueditor/third-party/SyntaxHighlighter/shCoreDefault.css' %}">
+{% endblock %}
+
+{% block head_js %}
+    <script src="{% static 'ueditor/third-party/SyntaxHighlighter/shCore.js' %}"></script>
+    <script>
+        SyntaxHighlighter.all();
+    </script>
+    <script src="/static/prism/prism.js" charset="utf-8"></script>
+    <script src="//staticfiles.amd794.com/viewer.min.js"></script>
+    <script type="text/javascript"
+            src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$', '$']]},
+            messageStyle: "none"
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+{% endblock %}
+{% block content %}
+
+    <div class="mysection content">
+        <article>
+            <h3 class="arc-title index-title">{{ article.title }} </h3>
+            <div class="post-line bg-color">
+                <ul>
+                    <li><a title="{{ article.author }}发表于{{ article.date_time }}"><i class="el-time"></i>
+                        <time>{{ article.date_time }}</time>
+                    </a></li>
+                    <li><a href="#"><i class="el-user"></i>{{ article.author }}</a></li>
+                    <li><a href="#Coon" title="转到评论"><i class="el-comment"></i>{{ article.comment }}条</a></li>
+                    <li><a title="已有 {{ article.view }} 次浏览"><i class="el-eye-open"></i>{{ article.view }}</a></li>
+                    <li class="yd-box"><i class="iconfont icon-yuedu"></i>
+                        <span class="ydTime"></span>
+                        <span class="words"></span>
+                    </li>
+                    <li>
+                        <video id="langdu" style="display:none">
+                            <source id="source"
+                                    src="//tts.baidu.com/text2audio?lan=zh&ie=UTF-8&text=开始为你朗读文章"
+                                    type="video/mp4">
+                        </video>
+                        <span id="du">
+                            <a href="javascript:playPause()"><img
+                                    src="//image.amd794.com/bofang.png" width="16"
+                                    height="16" style="position: relative; top: 4px;"
+                                    id="music_btn01" border="0">朗读文章</a>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+            <!--文章正文-->
+            <div class="article-content bg-color markdown-body">
+                <div class="post-content" style="padding: 10px 20px 20px 10px">
+                    <div class="BlogAnchor" style="text-indent: 20px; font-size: 14px; margin-bottom: 30px">
+                        <p>
+                            <b id="AnchorContentToggle" title="收起" style="cursor:pointer;">目录[-]</b>
+                        </p>
+                        <div class="AnchorContent" id="AnchorContent"></div>
+                    </div>
+                    <!--custom_markdown  定制md语法转换规则-->
+                    <div class="content-cc" id="article-content">{{ article.content|safe }}</div>
+                    <div class="show-article-box">
+                        <a>展开全文</a>
+                    </div>
+                </div>
+            </div>
+            <!--分享-->
+            <div style="display: none;">
+                <div id="divOne"></div>
+                <canvas id="myCanvas" width="350" height="430"
+                        style="border:1px solid #d3d3d3;background:#ffffff;"></canvas>
+            </div>
+            <div class="article-fx">
+                <a class="fx-btn img-circle iconfont icon-fenxiang" href="javascript:;"></a>
+                <a class="haibao iconfont icon-zhaoxiang" href="javascript:;"></a>
+                <div class="bd-fx arc-bdfx">
+                    <i class="el-remove fx-close"></i>
+                    <div class="social-share" data-disabled="google,facebook,twitter,diandian,linkedin,tencent"
+                         data-image="{{ article.picture }}"></div>
+                </div>
+            </div>
+            <!--END 分享-->
+            <hr>
+
+            <!--标签-->
+            <div class="article_tag">
+                <ul>
+                    <li><a href="{% url "blog:article" pk=article.category_id %}"
+                           title="归类：{{ article.category.name }}">{{ article.category.name }}</a></li>
+                    {% for tag in article.tag.all %}
+                        <li><a href="{% url "blog:tag" name=tag.tag_name %}"
+                               title="标签：{{ tag.tag_name }} ">{{ tag.tag_name }}</a>&nbsp;
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <!--表情-->
+            <div class="cyEmoji" style="text-align: center">
+                <div id="cyEmoji" role="cylabs" data-use="emoji" sid="{{ source_id }}"></div>
+            </div>
+
+        </article>
+        <!--评论表单-->
+        {% include "blog/message.html" %}
+
+        <script src="//staticfiles.amd794.com/jquery.2.1.4.min.js"></script>
+        <script type="text/javascript" charset="utf-8"
+                src="//changyan.sohu.com/js/changyan.labs.https.js?appid=cyustH2ml"></script>
+    </div>
+{% endblock %}
+
+
+
+
+
+{% block js %}
+    <script src="/static/js/dist/haibao.min.js"></script>
+
+    <script src="/static/js/dist/remember_scroll.min.js"></script>
+    <script src="/static/js/dist/radialindicator.min.js"></script>
+
+    <script>RememberScroll.init();</script>
+{% endblock %}

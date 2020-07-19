@@ -1,0 +1,141 @@
+{% block css %}
+    <link rel="stylesheet" href="/static/css/dist/huaban.css"/>
+{% endblock %}
+<header class="myheader">
+
+    <div class="cjzs">
+        <!-- 梅花枝 -->
+        <div class="meiha"></div>
+        <!-- 灯笼1 -->
+        <div class="deng-box">
+            <div class="deng">
+                <div class="xian"></div>
+                <div class="deng-a">
+                    <div class="deng-b">
+                        <div class="deng-t">宵</div>
+                    </div>
+                </div>
+                <div class="shui shui-a">
+                    <div class="shui-c"></div>
+                    <div class="shui-b"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 灯笼2 -->
+        <div class="deng-box1">
+            <div class="deng">
+                <div class="xian"></div>
+                <div class="deng-a">
+                    <div class="deng-b">
+                        <div class="deng-t">元</div>
+                    </div>
+                </div>
+                <div class="shui shui-a">
+                    <div class="shui-c"></div>
+                    <div class="shui-b"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="top">
+        <!--头像左边部分-->
+        <div class="top-left">
+            <div class="logo"></div>
+
+            <!--滚动消息-->
+            <div class="web-xiaoxi">
+                <i class="el-speaker"></i>
+                <ul class="mulitline" id="mulitline">
+                    {% for announcement in announcements %}
+                        <li><a href="javascript:;" title="点击查看完整公告">{{ announcement.content|safe }}</a></li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+            <!--END 消息 -->
+
+            <!--手机菜单按钮-->
+            <div class="mobile-nav"><i class="el-lines"></i><i class="el-remove"></i></div>
+        </div>
+        <!--电脑导航开始-->
+        <nav class="mynav">
+            <ul class="orange-text">
+                <li class=""><a href="{% url "blog:index" %}">首页</a></li>
+                <li><a href="{% url "blog:about" %}">关于</a></li>
+                <li><a href="{% url "blog:article" pk=0 %}">文章</a></li>
+                <li class='drop'>
+                    <a href="JavaScript:;">分类<i class='el-chevron-down'></i></a>
+                    <div class="drop-nav orange-text ">
+                        <ul>
+                            {% for category in category_list %}
+                                <li><a href="{% url "blog:article" pk=category.pk %}">{{ category.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="{% url "blog:archive" %}">归档</a></li>
+                <li><a href="{% url "blog:link" %}">神兵利器</a></li>
+                <li><a href="{% url "blog:message" %}">留言反馈</a></li>
+            </ul>
+        </nav>
+
+        <!--这里是手机导航-->
+        <div class="mob-menu">
+            <!--手机顶部搜索-->
+            <div class="search ">
+                <form action="{% url "blog:search" %}" method="get">
+                    <div class="search-index">
+                        <input name="key" type="text" placeholder="请输入关键字" onfocus="this.placeholder=''"
+                               onblur="this.placeholder='请输入关键字'"/>
+                        <i class="el-search"><input value=" " type="submit"/></i>
+                    </div>
+                </form>
+            </div>
+            <!--手机下拉菜单-->
+            <ul>
+                <li><a href="{% url "blog:index" %}">首页</a></li>
+                <li><a href="{% url "blog:about" %}">关于</a></li>
+                <li><a href="{% url "blog:article" pk=0 %}">博客</a></li>
+                <li class='mob-drop'>
+                    <a href="javascrip:;">分类</a>
+                    <ul class="mob-dropmenu">
+                        {% for category in category_list %}
+                            <li><a href="{% url "blog:article" pk=category.pk %}">{{ category.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li><a href="{% url "blog:archive" %}">归档</a></li>
+                <li><a href="{% url "blog:link" %}">神兵利器</a></li>
+                <li><a href="{% url "blog:message" %}">留言</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--换肤--->
+    <script src="/static/js/dist/skin.min.js"></script>
+    <div class="select-skin">
+        <div class="skin-btn">
+            <a href="javascript:void(0);" class="skin-btn-open">换<br>肤</a>
+        </div>
+
+        <div class="skin-content">
+            <h1>选择风格<span class="skin-close">关闭</span></h1>
+            <div class="skin-content-list">
+                <div class="skin-list"><a id="qingxin" href="#" class="btn1">清新</a>
+                </div>
+                <div class="skin-list"><a id="jianyue" href="#" class="btn2">简约</a>
+                </div>
+                <div class="skin-list"><a id="qingshuang" href="#" class="btn3">清爽</a></div>
+            </div>
+        </div>
+    </div>
+    <div id="navigation" style="top: 0; display: none;"><p>已经到底了, 没有更多内容了哦亲!</p>
+    </div>
+    <div class="ydjd"></div>
+</header>
+{% block js %}
+    <script src="/static/js/dist/huaban.min.js"></script>
+    <script src="/static/js/dist/localstorage.min.js"></script>
+{% endblock %}
+
