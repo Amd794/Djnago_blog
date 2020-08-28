@@ -41,9 +41,6 @@
 ### 针对本项目的初始化操作
 1. `python manage.py makemigrations `  创建数据库映射   
 2. `python manage.py migrate`    映射表到数据库
-3. `python manage.py initgroup`  初始化分组
-4. ` python manage.py rebuild_index`  创建搜索索引  python manage.py update_index
-更新索引
 
 
 ### 安装uwsgi
