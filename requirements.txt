@@ -2,7 +2,7 @@ baidu-aip==2.2.18.0
 certifi==2019.9.11
 chardet==3.0.4
 Django==1.10.2
-djangorestframework==3.10.3
+djangorestframework==3.11.2
 idna==2.8
 Markdown==2.5.2
 Pygments==2.0.1
