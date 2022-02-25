@@ -81,7 +81,7 @@
     * restart program_name  # 重新启动程序
     * stop program_name     # 关闭程序
     * reload                # 重新加载配置文件
-    * quit                  # 
+    * quit                  # 退出控制台
 
 
 
