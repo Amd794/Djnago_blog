@@ -77,8 +77,8 @@
 然后使用命令`supervisord -c django_blog_supervisor.conf`运行就可以了。
 以后如果想要启动`uwsgi`，就可以通过命令`supervisorctl -c django_blog_supervisor.conf`进入到管理控制台，然后可以执行相关的命令进行管理：
     * status                # 查看状态
-    * start program_name    #启动程序
-    * restart program_name  #重新启动程序
+    * start program_name    # 启动程序
+    * restart program_name  # 重新启动程序
     * stop program_name     # 关闭程序
     * reload                # 重新加载配置文件
     * quit                  # 退出控制台
