@@ -1,5 +1,5 @@
 
-#### 在服务器上的准备工作
+#### 在服务器上的准备工作。
 1. 安装好项目用到的`Python`。
     * sudo apt install python
     * sudo apt install python-pip
