@@ -18,10 +18,6 @@
     ```shell
     sudo apt install git
     ```
-4. 为了方便XShell或者CRT连接服务器，建议安装`OpenSSH`：
-    ```shell
-    sudo apt install openssh-server openssh-client
-    service ssh restart
     ```
 5. 安装`MySQL`服务器和客户端 , 并安装memcached：
     ```shell
